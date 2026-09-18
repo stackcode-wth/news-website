@@ -73,7 +73,12 @@ export default function ArticleDetail() {
   }
 
   const { title, image, summary, content, source, sourceUrl, publishedAt, category } = article;
-  const paragraphs = (content || summary || "").split(/\n+/).filter(Boolean);
+
+  // NewsData's free tier returns this exact string instead of real content —
+  // fall back to the description whenever we see it.
+  const usableContent = content && !content.includes("ONLY AVAILABLE IN PAID PLANS") ? content : summary;
+  const paragraphs = (usableContent || "").split(/\n+/).filter(Boolean);
+  const isPreviewOnly = usableContent === summary;
 
   return (
     <article className="mx-auto max-w-3xl">
@@ -101,9 +106,17 @@ export default function ArticleDetail() {
       )}
 
       <div className="mt-7 space-y-4 text-[17px] leading-8 text-slate-700">
-        {paragraphs.map((text, index) => (
-          <p key={index}>{text}</p>
-        ))}
+        {paragraphs.length > 0 ? (
+          paragraphs.map((text, index) => <p key={index}>{text}</p>)
+        ) : (
+          <p className="text-slate-500">No preview available for this story.</p>
+        )}
+
+        {isPreviewOnly && (
+          <p className="rounded-lg bg-slate-100 px-4 py-3 text-sm text-slate-600">
+            This is a preview. Read the rest at {source} using the link below.
+          </p>
+        )}
       </div>
 
       <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-slate-200 pt-5 text-sm">
