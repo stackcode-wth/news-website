@@ -49,10 +49,10 @@ export async function fetchNews({
     removeduplicate: 1,
   };
 
-  if (country) params.country = country;       // "in" for India, omitted for World
+  if (country) params.country = country;      
   if (category) params.category = category;
   if (query.trim()) params.q = query.trim();
-  if (page) params.page = page;                // NewsData uses a cursor string, not a number
+  if (page) params.page = page;                
 
   const { data } = await client.get("/latest", { params, signal });
 

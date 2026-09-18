@@ -17,8 +17,12 @@ function NotFound() {
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900">
+    <div className="flex min-h-screen flex-col bg-[#f4f4f2] text-slate-900">
       <Header />
+
+      <div className="bg-[#F5A623] py-2 text-center text-xs font-bold uppercase tracking-widest text-[#14161A] sm:text-sm">
+        Stay tuned. Stay updated. — fresh headlines every hour
+      </div>
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
         <Routes>

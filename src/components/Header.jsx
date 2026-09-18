@@ -9,19 +9,15 @@ export default function Header() {
 
   const [text, setText] = useState(urlQuery);
 
-  // Keep the box in sync when the URL changes from somewhere else (back button, logo click).
   useEffect(() => setText(urlQuery), [urlQuery]);
 
-  // Debounce: wait until typing pauses before hitting the API.
   useEffect(() => {
     if (text === urlQuery) return;
-
     const timer = setTimeout(() => {
       const next = new URLSearchParams(searchParams);
       text.trim() ? next.set("q", text.trim()) : next.delete("q");
       setSearchParams(next, { replace: true });
     }, 500);
-
     return () => clearTimeout(timer);
   }, [text, urlQuery, searchParams, setSearchParams]);
 
@@ -32,23 +28,18 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-3 px-4 py-3 sm:px-6">
-        <Link to="/" className="flex items-center gap-2.5 shrink-0">
-         
-          <span className="text-lg font-bold leading-4 tracking-tight">
-            INSIGHT
-            <br />
-            Daily
+    <header className="bg-[#14161A]">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-4 px-4 py-7 sm:px-6">
+        <Link to="/" className="flex items-center gap-3 shrink-0">
+          
+          <span className="text-2xl font-black uppercase tracking-tighter text-white">
+            INSIGHT<span className="text-[#F5A623]">Daily</span>
           </span>
         </Link>
 
         <div className="order-3 flex w-full items-center gap-3 sm:order-none sm:ml-auto sm:w-auto">
-          <label htmlFor="news-search" className="hidden text-sm text-slate-600 md:block">
-            Search Bar
-          </label>
-          <div className="relative flex-1 sm:w-64 sm:flex-none">
-            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+          <div className="relative flex-1 sm:w-80 sm:flex-none">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
               ⌕
             </span>
             <input
@@ -56,33 +47,33 @@ export default function Header() {
               type="search"
               value={text}
               onChange={(event) => setText(event.target.value)}
-              placeholder="Search India News..."
-              className="w-full rounded-full border border-slate-300 py-2 pl-9 pr-4 text-sm outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+              placeholder="Search India news…"
+              className="w-full rounded-md border border-white/10 bg-white/10 py-3 pl-11 pr-4 text-sm text-white placeholder-slate-400 outline-none transition focus:border-[#F5A623] focus:bg-white/15 focus:ring-1 focus:ring-[#F5A623]"
             />
           </div>
         </div>
 
-        <button
+        {/* <button
           type="button"
           aria-label="Your account"
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-300 text-slate-500 transition hover:bg-slate-50"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/15 text-slate-300 transition hover:bg-white/10"
         >
-          
-        </button>
+          ☺
+        </button> */}
       </div>
 
-      <nav aria-label="Categories" className="mx-auto max-w-6xl overflow-x-auto px-4 sm:px-6">
-        <ul className="flex gap-6 whitespace-nowrap">
+      <nav aria-label="Categories" className="mx-auto max-w-6xl overflow-x-auto border-t border-white/10 px-4 sm:px-6">
+        <ul className="flex gap-0.5 whitespace-nowrap">
           {CATEGORIES.map(({ label, value }) => {
             const isActive = value === activeCategory;
             return (
               <li key={value}>
                 <NavLink
                   to={categoryHref(value)}
-                  className={`block border-b-2 pb-3 text-sm transition ${
+                  className={`block border-b-2 px-3 py-3 text-[13px] font-medium uppercase tracking-wide transition ${
                     isActive
-                      ? "border-slate-900 font-semibold text-slate-900"
-                      : "border-transparent text-slate-500 hover:text-slate-800"
+                      ? "border-[#F5A623] font-bold text-white"
+                      : "border-transparent text-slate-400 hover:text-yellow-400 hover:underline hover:underline-offset-4"
                   }`}
                 >
                   {label}

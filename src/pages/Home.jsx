@@ -19,11 +19,10 @@ export default function Home() {
   const [error, setError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
 
-  // "india" -> country=in, "world" -> no country filter at all
+  
   const country = region === "india" ? "in" : "";
 
-  // Fresh load whenever a filter changes. AbortController stops an older
-  // request from overwriting a newer one when you type fast.
+ 
   useEffect(() => {
     const controller = new AbortController();
 
