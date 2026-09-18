@@ -7,7 +7,10 @@ const FALLBACK_IMAGE =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 9"><rect width="16" height="9" fill="#e2e8f0"/></svg>`
   );
 
-
+/**
+ * Pass `featured` for the large hero card at the top of the grid (see NewsList).
+ * Everything else renders the compact amber-accent card.
+ */
 export default function NewsItem({ article, featured = false }) {
   const { id, title, summary, image, source, publishedAt, category } = article;
 
@@ -24,11 +27,11 @@ export default function NewsItem({ article, featured = false }) {
           <div className="absolute inset-0 bg-gradient-to-t from-[#14161A] via-[#14161A]/50 to-transparent" />
 
           {/* corner ribbon */}
-          <div className="absolute right-4 top-4 -rotate-2 bg-[#F5A623] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-[#14161A] shadow-lg">
+          <div className="absolute right-4 top-4 z-10 -rotate-2 bg-[#F5A623] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-[#14161A] shadow-lg">
             Top Story
           </div>
 
-          <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8">
+          <div className="absolute inset-x-0 bottom-0 z-0 p-5 sm:p-8">
             <h2 className="max-w-3xl text-2xl font-black leading-[1.05] text-white sm:text-4xl">
               {title}
             </h2>
