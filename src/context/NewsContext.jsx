@@ -2,11 +2,7 @@ import { createContext, useCallback, useContext, useMemo, useRef } from "react";
 
 const NewsContext = createContext(null);
 
-/**
- * The API has no "get one article by id" endpoint, so we keep every article
- * we've already fetched in a Map. The detail page reads from here instead of
- * making a second request.
- */
+
 export function NewsProvider({ children }) {
   const cache = useRef(new Map());
 

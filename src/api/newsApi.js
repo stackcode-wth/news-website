@@ -7,7 +7,7 @@ const client = axios.create({
   timeout: 15000,
 });
 
-// Tab label -> the category value NewsData expects
+// Tab label 
 export const CATEGORIES = [
   { label: "Top Headlines", value: "top" },
   { label: "Business", value: "business" },
@@ -15,9 +15,7 @@ export const CATEGORIES = [
   { label: "Sports", value: "sports" },
 ];
 
-// The API response has a lot of fields we don't need and odd names.
-// Normalising here means components never touch raw API shapes —
-// if you swap to NewsAPI later, only this file changes.
+//only this file changes during news api
 function normalize(item) {
   return {
     id: item.article_id,

@@ -35,13 +35,11 @@ export default function Header() {
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-3 px-4 py-3 sm:px-6">
         <Link to="/" className="flex items-center gap-2.5 shrink-0">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-blue-700 text-base text-white">
-            ◍
-          </span>
+         
           <span className="text-lg font-bold leading-4 tracking-tight">
-            Global
+            INSIGHT
             <br />
-            News
+            Daily
           </span>
         </Link>
 
@@ -69,7 +67,7 @@ export default function Header() {
           aria-label="Your account"
           className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-300 text-slate-500 transition hover:bg-slate-50"
         >
-          ☺
+          
         </button>
       </div>
 

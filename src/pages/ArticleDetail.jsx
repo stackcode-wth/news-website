@@ -9,10 +9,7 @@ export default function ArticleDetail() {
   const navigate = useNavigate();
   const { getArticle, remember } = useNewsCache();
 
-  // Three ways to get the article, cheapest first:
-  // 1. router state (passed when you click a card)
-  // 2. the in-memory cache
-  // 3. refetch the feed — only needed if someone opens/refreshes this URL directly
+  
   const [article, setArticle] = useState(
     () => location.state?.article ?? getArticle(id) ?? null
   );
