@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import NewsList from "../components/NewsList";
-import { fetchNews, findCategory } from "../api/newsApi";
+import { fetchNews } from "../api/newsApi";
 import { useNewsCache } from "../context/NewsContext";
 
 export default function Home() {
@@ -11,7 +11,6 @@ export default function Home() {
   const category = searchParams.get("category") ?? "top";
   const region = searchParams.get("region") === "world" ? "world" : "india";
   const query = searchParams.get("q") ?? "";
-  const activeSection = findCategory(category);
 
   const [articles, setArticles] = useState([]);
   const [nextPage, setNextPage] = useState(null);
@@ -20,11 +19,10 @@ export default function Home() {
   const [error, setError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
 
-  // "india" -> country=in, "world" -> no country filter at all
+  
   const country = region === "india" ? "in" : "";
 
-  // Fresh load whenever a filter changes. AbortController stops an older
-  // request from overwriting a newer one when you type fast.
+ 
   useEffect(() => {
     const controller = new AbortController();
 
@@ -77,7 +75,6 @@ export default function Home() {
   return (
     <NewsList
       articles={articles}
-      heading={activeSection.label}
       region={region}
       onRegionChange={handleRegionChange}
       loading={loading}

@@ -23,6 +23,12 @@ export const CATEGORIES = [
   { label: "Travel", value: "tourism" },
   { label: "Fashion", value: "fashion", keyword: "fashion" },
   { label: "Weather", value: "weather", keyword: "weather OR rainfall OR heatwave OR cyclone" },
+  { label: "Lifestyle", value: "lifestyle" },
+  { label: "Crime", value: "crime" },
+  { label: "Cricket", value: "cricket", keyword: "cricket" },
+  { label: "Bollywood", value: "bollywood", keyword: "bollywood" },
+  { label: "Startups", value: "startups", keyword: "startup OR startups" },
+  { label: "Automobile", value: "automobile", keyword: "automobile OR electric vehicle OR car launch" },
 ];
 
 export function findCategory(value) {
