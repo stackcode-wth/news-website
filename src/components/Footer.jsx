@@ -28,6 +28,15 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+
+          <p className="mt-6 text-xs font-bold uppercase tracking-widest text-[#F5A623]">Company</p>
+          <ul className="mt-3 text-sm text-slate-300">
+            <li>
+              <Link to="/about" className="transition hover:text-white">
+                About
+              </Link>
+            </li>
+          </ul>
         </nav>
       </div>
 
