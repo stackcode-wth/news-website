@@ -7,10 +7,7 @@ const FALLBACK_IMAGE =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 9"><rect width="16" height="9" fill="#e2e8f0"/></svg>`
   );
 
-/**
- * Pass `featured` for the large hero card at the top of the grid (see NewsList).
- * Everything else renders the compact amber-accent card.
- */
+
 export default function NewsItem({ article, featured = false }) {
   const { id, title, summary, image, source, publishedAt, category } = article;
 

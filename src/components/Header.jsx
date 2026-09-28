@@ -31,9 +31,11 @@ export default function Header() {
     <header className="bg-[#14161A]">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-4 px-4 py-7 sm:px-6">
         <Link to="/" className="flex items-center gap-3 shrink-0">
-          
+          <span className="grid h-12 w-12 place-items-center rounded-lg bg-[#F5A623] text-xl font-black text-[#14161A]">
+            ◍
+          </span>
           <span className="text-2xl font-black uppercase tracking-tighter text-white">
-            INSIGHT<span className="text-[#F5A623]">Daily</span>
+            Global<span className="text-[#F5A623]">News</span>
           </span>
         </Link>
 
@@ -53,16 +55,16 @@ export default function Header() {
           </div>
         </div>
 
-        {/* <button
+        <button
           type="button"
           aria-label="Your account"
           className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/15 text-slate-300 transition hover:bg-white/10"
         >
           ☺
-        </button> */}
+        </button>
       </div>
 
-      <nav aria-label="Categories" className="mx-auto max-w-6xl overflow-x-auto border-t border-white/10 px-4 sm:px-6">
+      <nav aria-label="Categories" className="mx-auto max-w-6xl overflow-x-auto border-t border-white/10 px-4 [scrollbar-width:none] sm:px-6 [&::-webkit-scrollbar]:hidden">
         <ul className="flex gap-0.5 whitespace-nowrap">
           {CATEGORIES.map(({ label, value }) => {
             const isActive = value === activeCategory;
@@ -73,7 +75,7 @@ export default function Header() {
                   className={`block border-b-2 px-3 py-3 text-[13px] font-medium uppercase tracking-wide transition ${
                     isActive
                       ? "border-[#F5A623] font-bold text-white"
-                      : "border-transparent text-slate-400 hover:text-yellow-400 hover:underline hover:underline-offset-4"
+                      : "border-transparent text-slate-400 hover:text-white"
                   }`}
                 >
                   {label}

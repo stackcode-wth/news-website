@@ -7,15 +7,29 @@ const client = axios.create({
   timeout: 15000,
 });
 
-// Tab label 
+
 export const CATEGORIES = [
   { label: "Top Headlines", value: "top" },
   { label: "Business", value: "business" },
   { label: "Technology", value: "technology" },
   { label: "Sports", value: "sports" },
+  { label: "Politics", value: "politics" },
+  { label: "Entertainment", value: "entertainment" },
+  { label: "Health", value: "health" },
+  { label: "Science", value: "science" },
+  { label: "Education", value: "education" },
+  { label: "Environment", value: "environment" },
+  { label: "Food", value: "food" },
+  { label: "Travel", value: "tourism" },
+  { label: "Fashion", value: "fashion", keyword: "fashion" },
+  { label: "Weather", value: "weather", keyword: "weather OR rainfall OR heatwave OR cyclone" },
 ];
 
-//only this file changes during news api
+export function findCategory(value) {
+  return CATEGORIES.find((c) => c.value === value) ?? CATEGORIES[0];
+}
+
+
 function normalize(item) {
   return {
     id: item.article_id,
@@ -49,10 +63,19 @@ export async function fetchNews({
     removeduplicate: 1,
   };
 
-  if (country) params.country = country;      
-  if (category) params.category = category;
-  if (query.trim()) params.q = query.trim();
-  if (page) params.page = page;                
+  if (country) params.country = country;       // "in" for India, omitted for World
+
+  const section = findCategory(category);
+  const userQuery = query.trim();
+
+  if (section.keyword) {
+   
+    params.q = userQuery ? `(${section.keyword}) AND ${userQuery}` : section.keyword;
+  } else {
+    params.category = section.value;
+    if (userQuery) params.q = userQuery;
+  }
+  if (page) params.page = page;                // NewsData uses a cursor string, not a number
 
   const { data } = await client.get("/latest", { params, signal });
 
