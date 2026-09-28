@@ -15,20 +15,18 @@ export const CATEGORIES = [
   { label: "Sports", value: "sports" },
   { label: "Politics", value: "politics" },
   { label: "Entertainment", value: "entertainment" },
-  { label: "Health", value: "health" },
+
   { label: "Science", value: "science" },
   { label: "Education", value: "education" },
-  { label: "Environment", value: "environment" },
-  { label: "Food", value: "food" },
-  { label: "Travel", value: "tourism" },
+
   { label: "Fashion", value: "fashion", keyword: "fashion" },
   { label: "Weather", value: "weather", keyword: "weather OR rainfall OR heatwave OR cyclone" },
-  { label: "Lifestyle", value: "lifestyle" },
+
   { label: "Crime", value: "crime" },
   { label: "Cricket", value: "cricket", keyword: "cricket" },
-  { label: "Bollywood", value: "bollywood", keyword: "bollywood" },
+
   { label: "Startups", value: "startups", keyword: "startup OR startups" },
-  { label: "Automobile", value: "automobile", keyword: "automobile OR electric vehicle OR car launch" },
+
 ];
 
 export function findCategory(value) {
@@ -69,7 +67,7 @@ export async function fetchNews({
     removeduplicate: 1,
   };
 
-  if (country) params.country = country;       // "in" for India, omitted for World
+  if (country) params.country = country;     
 
   const section = findCategory(category);
   const userQuery = query.trim();
@@ -81,7 +79,7 @@ export async function fetchNews({
     params.category = section.value;
     if (userQuery) params.q = userQuery;
   }
-  if (page) params.page = page;                // NewsData uses a cursor string, not a number
+  if (page) params.page = page;         
 
   const { data } = await client.get("/latest", { params, signal });
 

@@ -36,7 +36,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <div className="order-3 flex w-full items-center gap-3 sm:order-none sm:ml-auto sm:w-auto">
+        {/* <div className="order-3 flex w-full items-center gap-3 sm:order-none sm:ml-auto sm:w-auto">
           <div className="relative flex-1 sm:w-80 sm:flex-none">
             <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
               ⌕
@@ -50,7 +50,7 @@ export default function Header() {
               className="w-full rounded-md border border-white/10 bg-white/10 py-3 pl-11 pr-4 text-sm text-white placeholder-slate-400 outline-none transition focus:border-[#F5A623] focus:bg-white/15 focus:ring-1 focus:ring-[#F5A623]"
             />
           </div>
-        </div>
+        </div> */}
 
       </div>
 
